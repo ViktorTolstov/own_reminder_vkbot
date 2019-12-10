@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin login</title>
+        <!--<link rel="stylesheet" href="css/style.css">-->
+        <style>
+            * {
+    font-family: Arial, Verdana, sans-serif;
+    color: #665544;
+}
+
+form {
+    width: 400px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: right;
+}
+
+input {
+    border-bottom: 1px dotted #dcdcdc;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding: 5px;
+    width: 280px;
+    margin-bottom: 20px;
+}
+
+input:focus {
+    border-bottom: 1px solid #dcdcdc;
+    outline: none;
+}
+            
+input#submit {
+    color: #ffffff;
+    background-color: #665544;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+}
+
+input#submit:hover {
+    color: #665544;
+    background-color: #efefef;
+}
+
+legend {
+    background-color: #efefef;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.wrapper {
+    width: 720px;
+    margin: auto;
+}
+
+.error {
+    color: red;
+    text-align: left;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.textarea-box__input::-webkit-input-placeholder, 
+.textarea-box__input::placeholder,
+.textarea-box__input::placeholder {
+    color: #b8b8b8;
+    font-size: 1.4rem;
+    opacity: 1
+}
+
+.textarea-box__input:focus {
+    border-color: #e8500e;
+    background-color: #fff;
+    outline: none
+}
+
+.textarea-box__input:disabled {
+    background-color: #fff;
+    border-color: #f6f6f6;
+    color: #e8e9ec;
+    overflow: hidden;
+    resize: none
+}
+
+.textarea-box__input:disabled::-webkit-input-placeholder,
+.textarea-box__input:disabled::-ms-input-placeholder,
+.textarea-box__input:disabled::placeholder {
+    color: #e8e9ec
+}
+
+.textarea-box__input {
+    border-color: #e2e2e2;
+    width: 90%;
+    height: 200px;
+    resize: none; 
+}
+
+textarea {
+    margin-right: 17px;
+}
+
+#request {
+    margin-top: 20px;
+}
+
+
+.select-box__fake-select {
+    position: relative
+}
+
+.select-box__fake-select.success .select-box__dropdown-toggle {
+    border-color: #189d3f
+}
+
+.select-box__fake-select.error .select-box__dropdown-toggle {
+    border-color: #a30b28
+}
+
+.select-box__fake-select.error ~ .select-box__error-message {
+    display: block
+}
+
+.select-box__fake-select.disabled .select-box__dropdown-toggle {
+    background-color: transparent;
+    color: #e8e9ec;
+    border-color: #e8e9ec;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.select-box__fake-select.disabled .select-box__dropdown-toggle:after {
+    opacity: 0.3
+}
+
+.select-box__fake-select.disabled .select-box__icon {
+    opacity: 0.3
+}
+
+.select-box__help-text {
+    color: #808495;
+    font-size: 12px;
+    font-weight: 600;
+    left: 18px;
+    position: absolute;
+    top: -22px
+}
+
+.select-box__dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -webkit-animation: fadeEffect 0.3s;
+    animation: fadeEffect 0.3s;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 2
+}
+
+.select-box__dropdown.show {
+    display: block
+}
+
+.select-box__dropdown-toggle {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 2px;
+    background-color: #fff;
+    border: 1px solid #acacac;
+    color: #2b2b2b;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+    padding: 14px 28px 14px 18px;
+    position: relative;
+    text-align: left;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    width: 100%
+}
+
+.select-box__dropdown-toggle:hover {
+    background-color: #f6f6f6
+}
+
+.select-box__dropdown-toggle:focus {
+    outline: none
+}
+
+.select-box_width_full .select-box__dropdown-toggle {
+    width: 100%
+}
+
+.select-box_text-transform_u .select-box__dropdown-toggle {
+    text-transform: uppercase
+}
+
+.select-box__dropdown-toggle:after {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgMTAgNiI+CiAgICA8cGF0aCBmaWxsPSIjQUNBQ0FDIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjAxIDUuNTgxYS41NzMuNTczIDAgMCAxLS40MDctLjE2N0wuMjIyIDEuMDMyQS41NzQuNTc0IDAgMSAxIDEuMDMzLjIyTDUuMDEgNC4xOTYgOC45ODUuMjJhLjU3My41NzMgMCAxIDEgLjgxMi44MTJMNS40MTUgNS40MTRhLjU3Mi41NzIgMCAwIDEtLjQwNi4xNjd6Ii8+Cjwvc3ZnPgo=);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    content: '';
+    height: 8px;
+    position: absolute;
+    right: 14px;
+    top: calc(50% - 4px);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 10px
+}
+
+.select-box__dropdown-toggle.active:after {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg)
+}
+
+.select-box__dropdown-toggle_icon {
+    padding: 12px 28px 12px 12px
+}
+
+.select-box__dropdown-toggle-text {
+    display: inline-block;
+    pointer-events: none
+}
+
+.select-box__icon {
+    fill: #cbcbcb;
+    height: 24px;
+    margin-right: 7px;
+    pointer-events: none;
+    width: 24px
+}
+
+.select-box__dropdown-item {
+    color: #acacac;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    line-height: 1.45;
+    padding: 15px 18px;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease
+}
+
+.select-box_text-transform_u .select-box__dropdown-item {
+    text-transform: uppercase
+}
+
+.select-box__dropdown-item.active {
+    color: #e8500e;
+    padding-right: 28px
+}
+
+.select-box__dropdown-item.active:before {
+    background-image: url("data:image/svg+xml,%3Csvg class='select-box__dropdown-item-icon' xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath fill='%23e8500e' fill-rule='evenodd' d='M13.3.2a.7.7 0 0 0-1 0l-8 8.1-3.1-3a.7.7 0 0 0-1 .9l3.6 3.6a.7.7 0 0 0 1 0l8.5-8.6a.7.7 0 0 0 0-1z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    content: '';
+    height: 10px;
+    position: absolute;
+    right: 12px;
+    top: calc(50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 14px
+}
+
+.select-box__dropdown-item:hover {
+    background-color: #f6f6f6
+}
+
+.select-box__dropdown-item-title {
+    color: #454553;
+    font-weight: 700;
+    pointer-events: none;
+    padding: 10px 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.select-box__error-message {
+    color: #a30b28;
+    display: none;
+    font-size: 12px;
+    margin-top: 4px;
+    padding-left: 18px
+}
+
+.select-box_sm__dropdown-toggle {
+    font-size: 12px;
+    padding: 8px 15px 8px 13px
+}
+
+.select-box_width_full .toggle-dropdown__toggler {
+    width: 100%
+}
+
+.select-box_text-transform_u .toggle-dropdown__toggler {
+    text-transform: uppercase
+}
+
+.select-box {
+    width: 90%;
+    margin: auto;
+}
+         </style>
+    </head>
+    <body>
+        <main id='content'>
+            <div class='wrapper'>
+                <form>
+                    <label for="name">Userame: </label><input type="text" id="username" />
+                    <label for="password">Password: </label><input type="password" id="password" />
+                    <input type="submit" value="Submit" id="submit" />
+                    <p class="error hidden">Incorrect username or password </p>
+                </form> 
+            </div>
+        </main>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src='script.js'></script>
+</html>
