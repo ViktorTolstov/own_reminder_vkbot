@@ -1,5 +1,5 @@
 (function () {
-	var url = 'http://127.0.0.1:8080/client_server/';
+	var url = 'https://vk-bot-cmit.herokuapp.com/client_server/';
     $('#submit').on('click', function (e) {
         e.preventDefault();
         let username = $('#username').val();
