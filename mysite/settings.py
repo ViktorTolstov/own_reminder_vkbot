@@ -25,12 +25,12 @@ SECRET_KEY = '!q0k7^j)kvyi&2^i7h13-53gv!$58vxy(6(imsm$9nqimmjnz9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ba6d8346.ngrok.io","127.0.0.1"]
+ALLOWED_HOSTS = ["vk-bot-cmit.herokuapp.com"]
 
 
 # Application definition
 
-CORS_ORIGIN_WHITELIST = ["https://34bc7cfe.ngrok.io"]
+CORS_ORIGIN_WHITELIST = ["https://vk-bot-cmit.herokuapp.com"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
