@@ -1,1 +1,1 @@
-web: gunicorn vk-bot-cmit.wsgi
+web: gunicorn manage.wsgi
