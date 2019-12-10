@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myBotVK.views import get_message as bot
+from myBotVK.views import init as bot
 from myBotVK.views import admin as bot_admin
 from myBotVK.views import script as script
 from myBotVK.views import client_server as cl_ser
