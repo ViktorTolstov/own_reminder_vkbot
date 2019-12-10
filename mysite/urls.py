@@ -24,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('botVK/', bot),
     path('bot_admin/', bot_admin),
-    path('bot_admin/script.js/', script),
+    path('bot_admin/script.js', script),
     path('client_server/', cl_ser)
 ]
