@@ -16,7 +16,7 @@ def admin(request):
 @csrf_exempt
 def script(request):
 	with open('myBotVK/templates/script.js', 'r') as file:
-		return HttpResponse(file.read())
+		return HttpResponse(file.read(), content_type="text/javascript")
 
 @csrf_exempt
 def client_server(request):
